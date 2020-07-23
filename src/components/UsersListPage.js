@@ -12,17 +12,22 @@ import FilterSort from "./FilterSort";
 const UsersListPage = ({loginInfo, onLogout, isLoading, onGetUsersList}) => {
     useEffect(()=>{
         onGetUsersList()
-        // eslint-disable-next-line
-    }, [])
+
+    }, [onGetUsersList])
     return (
         <div>
             <Menu/>
             {loginInfo.loggedIn
                 ? <div>
-                    {isLoading && <Circle/>}
-                    <FilterSort/>
-                    <UsersList />
-                    <Link to='/' onClick={onLogout}>Logout</Link>
+                    {isLoading
+                        ? <Circle/>
+                        :<>
+                             <FilterSort/>
+                             <UsersList />
+                             <Link to='/' onClick={onLogout}>Logout</Link>
+                         </>
+                    }
+
                   </div>
                 : <div>No permission. You need to login on <Link to='/'>Main page</Link></div>
             }
@@ -39,6 +44,7 @@ export default connect(
     }),
     dispatch => ({
         onLogout: () => {
+            sessionStorage.removeItem("loggedUser")
             dispatch({type: LOGOUT})
         },
         onGetUsersList: () => {

@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import {LOGIN, LOGOUT} from "../constatns/actionsList";
+import {LOGIN} from "../constatns/actionsList";
 import Menu from "./Menu";
 
-function App({loginInfo, onLogin, onLogout}) {
+function App({loginInfo, onLogin}) {
   return (
     <div className="App">
       <Menu/>
@@ -12,8 +12,7 @@ function App({loginInfo, onLogin, onLogout}) {
 
           { (loginInfo.loggedIn) ?
               (<div>
-                  <p>Hello, {loginInfo.userInfo}</p>
-                  <button onClick={onLogout}>logout</button>
+                  <p>Hello, {loginInfo.userInfo}, welcome back!</p>
               </div>)
               :
               <button onClick={onLogin}>login</button>
@@ -29,10 +28,8 @@ export default connect(
     }),
     dispatch => ({
         onLogin: () => {
+            sessionStorage.setItem("loggedUser", 'AuthGuest' )
             dispatch({type: LOGIN, payload: 'AuthGuest'})
-        },
-        onLogout: () => {
-            dispatch({type: LOGOUT})
         },
     })
 )(App);

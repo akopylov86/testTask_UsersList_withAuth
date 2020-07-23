@@ -22,7 +22,6 @@ export function usersList(state = initialState, action){
         case FETCH_USERS_LIST:
             return {...state, isLoading: true, data: []}
         case FETCH_USERS_LIST_SUCCESS:
-            console.log("got data", action.payload)
             return {...state, isLoading: false, data: action.payload}
         case FETCH_USERS_LIST_FAIL:
             return {...state, isLoading: false, data: [{error: action.payload}], }

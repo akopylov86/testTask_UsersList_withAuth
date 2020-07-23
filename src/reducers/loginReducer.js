@@ -1,8 +1,9 @@
 import {LOGIN, LOGOUT} from "../constatns/actionsList";
 
+const localStorageUser = sessionStorage.getItem('loggedUser');
 const initialState = {
-    loggedIn: false,
-    userInfo: null,
+    loggedIn: (Boolean(localStorageUser) || false),
+    userInfo: (localStorageUser || null),
 }
 
 export function login(state = initialState, action){

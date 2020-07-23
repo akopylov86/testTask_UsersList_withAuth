@@ -15,7 +15,6 @@ const FilterSort = ({ onFilter, onSort, filter }) => {
 
     const sortList = (event) =>{
         event.preventDefault();
-        console.log(sortFieldInput.value, sortDirectionInput.value)
         onSort(sortFieldInput.value, sortDirectionInput.value)
     }
 

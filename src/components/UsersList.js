@@ -6,7 +6,6 @@ import {ASC} from "../constatns/sortTypes";
 
 const UsersList = ({usersListData}) => {
 
-    console.log("ULD:", usersListData)
     return(
         <div>
             <div>Users list</div>
