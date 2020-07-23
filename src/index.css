@@ -11,3 +11,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.menu {
+
+  background: cornflowerblue;
+}
+
+.menu > *  {
+  padding: 5px;
+}
+
+.table {
+  display: table;
+  border: 1px solid #999999;
+}
+.tableRow {
+  display: table-row;
+  border: 1px solid #999999;
+}
+
+.tableCell {
+  display: table-cell;
+  border: 1px solid #999999;
+  width: 8em;
+}
