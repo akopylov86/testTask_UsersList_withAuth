@@ -3,10 +3,9 @@ import {connect} from "react-redux";
 import {FILTER_USER_LIST, SORT_USER_LIST} from "../constatns/actionsList";
 import {ASC, DESC} from "../constatns/sortTypes";
 
-const FilterSort = ({ onFilter, onSort, filter }) => {
+const FilterSort = ({ onFilter, onSort, filter, sort }) => {
     let filterInput = filter;
-    let sortFieldInput;
-    let sortDirectionInput;
+
 
     const filterList = (event) => {
         event.preventDefault()
@@ -15,30 +14,44 @@ const FilterSort = ({ onFilter, onSort, filter }) => {
 
     const sortList = (event) =>{
         event.preventDefault();
-        onSort(sortFieldInput.value, sortDirectionInput.value)
+        let sortField = sort.field;
+        let sortDirection = sort.direction;
+        let sortFieldElement = document.querySelector(`#${sortField.replace(".","\\.")}`);
+
+        if(!event.target.id)
+            return
+
+        if(sortFieldElement) {
+            sortFieldElement.classList.remove("bg-light")
+        }
+
+        if(sortField === event.target.id){
+            sortDirection = sortDirection === ASC ? DESC : ASC;
+        }
+
+        event.target.classList.toggle("bg-light")
+        sortField = event.target.id
+        onSort(sortField, sortDirection)
     }
 
     return (
         <div>
-            <form onSubmit={filterList}>
+            <form onSubmit={filterList} className='mb-2'>
                 <input type="text" ref={input=>{filterInput = input}}/>
                 <button type="submit">Find</button>
             </form>
 
-            <div>
-                <label htmlFor="sort">Choose sort:</label>
-
-                <select id="sort" ref={input=>{sortFieldInput = input}} onChange={sortList} defaultValue="name.first">
-                    <option value="name.first" >First name</option>
-                    <option value="dob.age">Age</option>
-                </select>
-                <label htmlFor="sortDir">Choose sort:</label>
-
-                <select id="sortDir" ref={input=>{sortDirectionInput = input}} onChange={sortList} defaultValue={ASC}>
-                    <option value={ASC}>0->10 / A->Z</option>
-                    <option value={DESC}>10->0 / Z->A</option>
-                </select>
-            </div>
+            <div className='container'>
+                   <div className="row bg-info " onClick={sortList}>
+                       <div className='col-1' ></div>
+                       <div className='col-1' >Title</div>
+                       <div className='col-2' id='name.first'>First name</div>
+                       <div className='col-2' id='name.last'>Last name</div>
+                       <div className='col-1' id='dob.age'>Age</div>
+                       <div className='col-4' >Email</div>
+                       <div className="col-1"></div>
+                  </div>
+             </div>
         </div>
     )
 }

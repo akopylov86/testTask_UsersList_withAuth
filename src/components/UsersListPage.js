@@ -15,10 +15,10 @@ const UsersListPage = ({loginInfo, onLogout, isLoading, onGetUsersList}) => {
 
     }, [onGetUsersList])
     return (
-        <div>
+        <div  >
             <Menu/>
             {loginInfo.loggedIn
-                ? <div>
+                ? <div className="container-md mt-3">
                     {isLoading
                         ? <Circle/>
                         :<>
@@ -29,7 +29,7 @@ const UsersListPage = ({loginInfo, onLogout, isLoading, onGetUsersList}) => {
                     }
 
                   </div>
-                : <div>No permission. You need to login on <Link to='/'>Main page</Link></div>
+                : <div className="container-md" >No permission. You need to login on <Link to='/'>Main page</Link></div>
             }
 
         </div>

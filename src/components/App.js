@@ -7,11 +7,11 @@ function App({loginInfo, onLogin}) {
   return (
     <div className="App">
       <Menu/>
-      <div>
+      <div className='container-md'>
           <strong>It is your home page! </strong>
 
           { (loginInfo.loggedIn) ?
-              (<div>
+              (<div >
                   <p>Hello, {loginInfo.userInfo}, welcome back!</p>
               </div>)
               :
@@ -28,7 +28,7 @@ export default connect(
     }),
     dispatch => ({
         onLogin: () => {
-            sessionStorage.setItem("loggedUser", 'AuthGuest' )
+            localStorage.setItem("loggedUser", 'AuthGuest' )
             dispatch({type: LOGIN, payload: 'AuthGuest'})
         },
     })

@@ -8,7 +8,7 @@ const UsersList = ({usersListData}) => {
 
     return(
         <div>
-            <div>Users list</div>
+            {/*<div>Users list</div>*/}
             <div className="table">
                 {usersListData.map( user => (<UserLine key={user.email} user={user} />) ) }
             </div>

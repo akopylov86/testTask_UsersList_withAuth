@@ -5,7 +5,7 @@ import {LOGOUT} from "../constatns/actionsList";
 
 const Menu = () => {
     return (
-        <div className='menu'>
+        <div className='menu bg-info'>
             <Link to="/">Main page</Link>
             <Link to="/users">Users</Link>
         </div>
