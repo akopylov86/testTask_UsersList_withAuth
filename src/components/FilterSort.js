@@ -43,13 +43,13 @@ const FilterSort = ({ onFilter, onSort, filter, sort }) => {
 
             <div className='container'>
                    <div className="row bg-info " onClick={sortList}>
-                       <div className='col-1' ></div>
+                       <div className='col-1' >&nbsp;</div>
                        <div className='col-1' >Title</div>
                        <div className='col-2' id='name.first'>First name</div>
                        <div className='col-2' id='name.last'>Last name</div>
                        <div className='col-1' id='dob.age'>Age</div>
                        <div className='col-4' >Email</div>
-                       <div className="col-1"></div>
+                       <div className="col-1">&nbsp;</div>
                   </div>
              </div>
         </div>

@@ -9,7 +9,7 @@ const User = ({ currentUser }) => {
             <Menu/>
             <div className="container text-center">
                 <div>User Info</div>
-                <div><img src={currentUser.picture.large} className="rounded"/></div>
+                <div><img src={currentUser.picture.large} alt="logo" className="rounded"/></div>
                 <div className="table-responsive">
                     <table className="table table-sm table-bordered">
                         <tbody>
@@ -27,7 +27,7 @@ const User = ({ currentUser }) => {
                         </tr>
                         <tr>
                             <td>Nationality</td>
-                            <td>{currentUser.nat} <img src={`https://www.countryflags.io/${currentUser.nat}/shiny/32.png`}/></td>
+                            <td>{currentUser.nat} <img src={`https://www.countryflags.io/${currentUser.nat}/shiny/32.png`} alt="flag_logo"/></td>
                         </tr>
                         <tr>
                             <td>Country</td>
@@ -51,7 +51,7 @@ const User = ({ currentUser }) => {
                         </tr>
                         <tr>
                             <td>Coordinates</td>
-                            <td><a href={`https://www.latlong.net/c/?lat=${currentUser.location.coordinates.latitude}&long=${currentUser.location.coordinates.longitude}`} target="_blank">Open coordinates</a></td>
+                            <td><a href={`https://www.latlong.net/c/?lat=${currentUser.location.coordinates.latitude}&long=${currentUser.location.coordinates.longitude}`} >Open coordinates</a></td>
                         </tr>
 
                         </tbody>
