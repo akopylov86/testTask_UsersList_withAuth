@@ -53,7 +53,6 @@ const User = ({ currentUser }) => {
                             <td>Coordinates</td>
                             <td><a href={`https://www.latlong.net/c/?lat=${currentUser.location.coordinates.latitude}&long=${currentUser.location.coordinates.longitude}`} >Open coordinates</a></td>
                         </tr>
-
                         </tbody>
                     </table>
                 </div>

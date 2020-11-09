@@ -4,13 +4,20 @@ import {connect} from "react-redux";
 import {LOGOUT} from "../constatns/actionsList";
 
 const Menu = () => {
+
     return (
-        <div className='menu bg-info'>
-            <Link to="/">Main page</Link>
-            <Link to="/users">Users</Link>
-        </div>
-
-
+        <nav className="navbar navbar-expand-lg navbar-light bg-info">
+            <div className="collapse navbar-collapse" id="navbarNav">
+                <ul className="navbar-nav">
+                    <li className="nav-item ">
+                        <Link className="nav-link" to="/">Home</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/users">Users</Link>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     )
 }
 

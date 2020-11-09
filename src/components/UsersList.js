@@ -5,13 +5,18 @@ import {connect} from "react-redux";
 import {ASC} from "../constatns/sortTypes";
 
 const UsersList = ({usersListData}) => {
+    const dataIsEmpty = usersListData.length === 0;
 
     return(
         <div>
-            {/*<div>Users list</div>*/}
-            <div className="table">
-                {usersListData.map( user => (<UserLine key={user.email} user={user} />) ) }
-            </div>
+            {dataIsEmpty
+                ? <div className="table">
+                    <UserLine />
+                  </div>
+                : <div className="table">
+                    {usersListData.map( user => (<UserLine key={user.email} user={user} />) ) }
+                  </div>
+            }
         </div>
     )
 
