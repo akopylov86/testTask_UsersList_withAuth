@@ -4,9 +4,13 @@ import '../index.css';
 import {connect} from "react-redux";
 import {ASC} from "../constatns/sortTypes";
 
-const UsersList = ({usersListData}) => {
-    const dataIsEmpty = usersListData.length === 0;
+const UsersList = ({usersListData, userListError}) => {
 
+    if(userListError) {
+        return (<div>oops, something went wrong</div>);
+    }
+
+    const dataIsEmpty = usersListData.length === 0;
     return(
         <div>
             {dataIsEmpty
@@ -24,6 +28,7 @@ const UsersList = ({usersListData}) => {
 
 export default connect(
     state=>({
+        userListError: state.usersList.error,
         usersListData: state.usersList.data
             .filter(
                 user=>(user.name.first
