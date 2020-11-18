@@ -6,30 +6,30 @@ import {ASC, DESC} from "../constatns/sortTypes";
 const FilterSort = ({ onFilter, onSort, filter, sort }) => {
     let filterInput = filter;
 
-
     const filterList = (event) => {
         event.preventDefault()
         onFilter(filterInput.value)
     }
 
+    const getClassNamesForSort = (name) => {
+        if (!sort) {
+            return;
+        }
+        return sort.field === name ? sort.direction : '';
+    };
+
     const sortList = (event) =>{
         event.preventDefault();
         let sortField = sort.field;
         let sortDirection = sort.direction;
-        let sortFieldElement = document.querySelector(`#${sortField.replace(".","\\.")}`);
 
         if(!event.target.id)
             return
-
-        if(sortFieldElement) {
-            sortFieldElement.classList.remove("bg-light")
-        }
 
         if(sortField === event.target.id){
             sortDirection = sortDirection === ASC ? DESC : ASC;
         }
 
-        event.target.classList.toggle("bg-light")
         sortField = event.target.id
         onSort(sortField, sortDirection)
     }
@@ -45,9 +45,9 @@ const FilterSort = ({ onFilter, onSort, filter, sort }) => {
                    <div className="row bg-info " onClick={sortList}>
                        <div className='col-1' >&nbsp;</div>
                        <div className='col-1' >Title</div>
-                       <div className='col-2' id='name.first'>First name</div>
-                       <div className='col-2' id='name.last'>Last name</div>
-                       <div className='col-1' id='dob.age'>Age</div>
+                       <div className={'col-2 ' + getClassNamesForSort('name.first') } id='name.first'>First name</div>
+                       <div className={'col-2 ' + getClassNamesForSort('name.last') } id='name.last'>Last name</div>
+                       <div className={'col-1 ' + getClassNamesForSort('dob.age') } id='dob.age'>Age</div>
                        <div className='col-4' >Email</div>
                        <div className="col-1">&nbsp;</div>
                   </div>

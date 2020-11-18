@@ -39,3 +39,29 @@ a {
   border: 1px solid #999999;
   width: 8em;
 }
+
+.asc, .desc {
+  position: relative;
+  padding-right: 20px !important;
+  cursor: pointer;
+  user-select: none;
+}
+
+.asc:after, .desc:after {
+  position: absolute;
+  content: '';
+  right: 5px;
+  top: 50%;
+  border-style: solid;
+}
+.asc:after {
+  margin-top: 1px;
+  border-width: 5px 5px 0 5px;
+  border-color: #eee transparent transparent transparent;
+}
+
+.desc:after {
+  margin-top: -2px;
+  border-width: 0 5px 5px 5px;
+  border-color: transparent transparent #eee transparent;
+}
